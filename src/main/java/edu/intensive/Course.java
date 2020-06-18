@@ -35,22 +35,5 @@ public class Course {
         BeanUtils.copyProperties(this, courseDeleted);
         courseDeleted.publishAfterCommit();
 
-//        String json = null;
-//        ObjectMapper objectMapper = new ObjectMapper();
-//
-//        try {
-//            json = objectMapper.writeValueAsString(courseDeleted);
-//        } catch (JsonProcessingException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//        System.out.println(json);
-//
-//        Processor processor = CourseApplication.applicationContext.getBean(Processor.class);
-//        MessageChannel outputChannel = processor.output();
-//        outputChannel.send(MessageBuilder
-//        .withPayload(json)
-//        .setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON)
-//        .build());
     }
 }
