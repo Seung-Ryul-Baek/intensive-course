@@ -2,10 +2,13 @@ package edu.intensive;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.messaging.Processor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
 import org.springframework.messaging.MessageHeaders;
@@ -21,12 +24,13 @@ public class Course {
     @GeneratedValue
     Long courseId;
     String courseName;
+    Long courseParticipants;
+    Double courseAverageGrade;
+    Long courseGradedNumber;
 
     @PrePersist
     public void onPrePersist(){
-        CourseRegistered ordered = new CourseRegistered();
-        BeanUtils.copyProperties(this, ordered);
-        ordered.publishAfterCommit();
+
     }
 
     @PreRemove

@@ -13,7 +13,7 @@ spring:
     stream:
       kafka:
         binder:
-          brokers: 10.250.117.147:9092
+          brokers: 10.250.172.236:9092
         streams:
           binder:
             configuration:
@@ -30,6 +30,16 @@ spring:
         event-out:
           destination: demo
           contentType: application/json
+
+feign:
+  payment:
+    url: localhost:8084
+  student:
+    url: localhost:8085
+  certification:
+    url: localhost:8083
+  hystrix:
+    enabled: true
 
 logging:
   level:
@@ -62,3 +72,11 @@ spring:
           contentType: application/json
 server:
   port: 8080
+
+feign:
+  payment:
+    url: payment:8080
+  course:
+    url: course:8080
+  student:
+    url: student:8080
